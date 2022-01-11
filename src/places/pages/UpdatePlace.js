@@ -5,6 +5,7 @@ import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
+import Card from '../../shared/components/UIElements/Card';
 import './PlaceForm.css';
 
 const DUMMY_PLACES = [
@@ -23,7 +24,7 @@ const DUMMY_PLACES = [
     {
         id: 'p2',
         title: 'Tokyo',
-        description: 'The capital of Japan',
+        description: 'The capital of Japan!',
         imageUrl: 'https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2016/06/Tokyo-Tower--1024x683.jpg',
         address: '4 Chome-2-8 Shibakoen, Minato City, Tokyo 105-0011, Japan',
         location: {
@@ -55,19 +56,21 @@ const UpdatePlace = () => {
     const identifiedPlace = DUMMY_PLACES.find(p => p.id === placeId);
 
     useEffect(() => {
-        setFormData(
-            {
-                title: {
-                    value: identifiedPlace.title,
-                    isValid: true
-                },
-                description: {
-                    value: identifiedPlace.description,
-                    isValid: true
-                }
-            }, true);
-            setIsLoading(false);
-    }, [setFormData, identifiedPlace]);
+        if(identifiedPlace) {
+            setFormData(
+                {
+                    title: {
+                        value: identifiedPlace.title,
+                        isValid: true
+                    },
+                    description: {
+                        value: identifiedPlace.description,
+                        isValid: true
+                    }
+                }, true);
+        }
+        setIsLoading(false);
+    },  [setFormData, identifiedPlace]);
 
     
 
@@ -79,7 +82,9 @@ const UpdatePlace = () => {
     if(!identifiedPlace) {
         return (
             <div className="center">
-                <h2>Could not find place!</h2>
+                <Card>
+                    <h2>Could not find place!</h2>
+                </Card>
             </div>
         );
     }
