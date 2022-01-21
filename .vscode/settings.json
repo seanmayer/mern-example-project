@@ -1,0 +1,6 @@
+{
+    "workbench.editor.autoLockGroups": {
+        "workbench.editorinputs.searchEditorInput": true,
+        "jsProfileVisualizer.cpuprofile.table": true
+    }
+}
