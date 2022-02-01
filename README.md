@@ -9,6 +9,7 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 4. `npm start --prefix nodejs-express`
 5. `npm install --save uuid --prefix nodejs-express`
 6. `npm install --save express-validator --prefix nodejs-express`
+7. `npm install --save axios --prefix nodejs-express`
 
 ## Testing Tools
 
