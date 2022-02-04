@@ -1,10 +1,10 @@
 ## Setting up NodeJS with express
 
-Install express -> `npm install express --save --prefix nodejs-dev`
+Install express -> `npm install express --save`
 Run the server -> `node nodejs/app.js`
 
 ## Nodemon - NodeJS tool to allow project recompilations on save
-Install nodemon -> `npm install nodemon --save-dev --prefix nodejs-dev`
+Install nodemon -> `npm install nodemon --save-dev`
 
 `package.json`:
 
@@ -20,7 +20,7 @@ Install nodemon -> `npm install nodemon --save-dev --prefix nodejs-dev`
 }
 ```
 
-Run nodemon: `npm start --prefix nodejs-dev`
+Run nodemon: `npm start`
 
 ## Body-parser - Ready to use middleware to parse incoming request bodys
-Install body-parser -> `npm install body-parser --save  --prefix nodejs-dev`
+Install body-parser -> `npm install body-parser --save`
