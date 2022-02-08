@@ -12,15 +12,30 @@ const createProduct = async (req, res, next) => {
      };
      const client = new MongoClient(url);
 
-     try {
-          await client.connect();
-          const db = client.db();
-          const result = db.collection('products').insertOne(newProduct);
-     } catch (error) {
-          return res.json({message: 'Could not store data'});
-     }
-     client.close();
-     res.json(newProduct);
+     client.connect((error) => {
+          if (error) {
+               return res.status(400).json({
+                    status: 'error',
+                    error: 'req body cannot be empty',
+                  });
+          } else {
+            const collection = client.db('products').collection("products");
+            collection.insertOne(newProduct, (error) => {
+              if (error) {
+               return res.status(400).json({
+                    status: 'error',
+                    error: 'req body cannot be empty',
+                  });
+              } else {
+                client.close();
+                res.status(200).json({
+                    status: 'succes',
+                    data: req.body,
+                  })
+              }
+            });
+          }
+        });
 };
 
 const getProducts = async (req, res, next) => {
