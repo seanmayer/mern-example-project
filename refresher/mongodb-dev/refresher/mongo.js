@@ -1,6 +1,5 @@
 if (process.env.NODE_ENV !== "production") {
      require("dotenv").config();
-
 }
 const MongoClient = require('mongodb').MongoClient;
 const url = process.env.CONNECTION;
@@ -29,7 +28,7 @@ const createProduct = async (req, res, next) => {
               } else {
                 client.close();
                 res.status(200).json({
-                    status: 'succes',
+                    status: 'success',
                     data: req.body,
                   })
               }
@@ -39,8 +38,17 @@ const createProduct = async (req, res, next) => {
 };
 
 const getProducts = async (req, res, next) => {
-
-};
+     const client = new MongoClient(url)
+     try {
+          await client.connect();
+          const db = client.db('products');
+          products = await db.collection('products').find().toArray();
+     } catch(error) {
+          return res.json
+     }
+     client.close();
+     res.json(products);
+}
 
 exports.createProduct = createProduct;
 exports.getProducts = getProducts;
