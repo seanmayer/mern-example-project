@@ -11,6 +11,7 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 6. `npm install --save express-validator --prefix nodejs-express`
 7. `npm install --save axios --prefix nodejs-express`
 8. `npm install dotenv --save`
+9. `npm install --save mongoose`
 
 ## Testing Tools
 
