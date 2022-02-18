@@ -45,7 +45,7 @@ const getPlacesByUserId = async (req, res, next) => {
     );
   }
 
-  res.json({ place: places.map(place => place.toObject({ getters: true })) });
+  res.json({ place: places.map((place) => place.toObject({ getters: true })) });
 };
 
 const createPlace = async (req, res, next) => {
@@ -89,7 +89,7 @@ const createPlace = async (req, res, next) => {
 const updatePlace = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    throw new HttpError("Invalid inputs passed.", 422);
+    return next(new HttpError("Invalid inputs passed.", 422));
   }
 
   const { title, description } = req.body;
@@ -98,11 +98,11 @@ const updatePlace = async (req, res, next) => {
   let place;
   try {
     place = await Place.findById(placeId);
-  } catch(err) {
+  } catch (err) {
     const error = new HttpError("Could not update place", 500);
     return next(error);
-  };
-  
+  }
+
   place.title = title;
   place.description = description;
 
@@ -122,13 +122,13 @@ const deletePlace = async (req, res, next) => {
   try {
     place = await Place.findById(placeId);
   } catch (err) {
-    const error = new HttpError('Something went wrong', 500);
+    const error = new HttpError("Something went wrong", 500);
     return next(error);
   }
   try {
     await place.remove();
   } catch (err) {
-    const error = new HttpError('Something went wrong', 500);
+    const error = new HttpError("Something went wrong", 500);
     return next(error);
   }
   res.status(200).json({ message: "Deleted place." });
