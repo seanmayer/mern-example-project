@@ -22,7 +22,7 @@ const signup = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { username, email, password, places } = req.body;
+  const { username, email, password } = req.body;
 
   if (await isUserExisting(email)) {
     const error = new HttpError(
@@ -37,7 +37,7 @@ const signup = async (req, res, next) => {
     email,
     image: "https://live.staticflickr.com/7631/26849088292_36fc52ee90_b.jpg",
     password,
-    places,
+    places: []
   });
 
   try {
