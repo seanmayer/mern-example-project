@@ -54,11 +54,16 @@ const login = async (req, res, next) => {
   let existingUser = await isUserExisting(email);
 
   if (!existingUser || existingUser.password !== password) {
-    const error = new HttpError("Invalid credentials, could not login.", 401);
+    const error = new HttpError("Invalid credentials, could not login.", 
+      401
+    );
     return next(error);
   }
 
-  res.json({ message: "Logged in!" });
+  res.json({ 
+    message: "Logged in!", 
+    user: existingUser.toObject({getters: true}
+  )});
 };
 
 const isUserExisting = async (email) => {
