@@ -163,7 +163,7 @@ const deletePlace = async (req, res, next) => {
     sess.startTransaction();
     await place.remove({ session: sess });
     place.creator.places.pull(place);
-    await place.creator.save({ session: sess });
+    await place.creator.save({ validateModifiedOnly: true, session: sess });
     await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError("Something went wrong", 500);
