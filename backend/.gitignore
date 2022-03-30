@@ -1,2 +1,4 @@
 # misc
 .env
+tmps/images/*
+!tmps/images/.gitkeep
