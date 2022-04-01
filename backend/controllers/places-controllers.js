@@ -77,8 +77,8 @@ const createPlace = async (req, res, next) => {
     address,
     location: coordinates,
     image:
-      "https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2016/06/Tokyo-Tower--1024x683.jpg",
-    creator,
+      req.file.path,
+    creator
   });
 
   let user;
