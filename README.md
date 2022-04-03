@@ -10,10 +10,11 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 5. `npm install --save uuid --prefix backend`
 6. `npm install --save express-validator --prefix backend`
 7. `npm install --save axios --prefix backend`
-8. `npm install dotenv --save`
-9. `npm install --save mongoose`
-10. `npm install --save mongoose-unique-validator`
+8. `npm install dotenv --save --prefix backend`
+9. `npm install --save mongoose --prefix backend`
+10. `npm install --save mongoose-unique-validator --prefix backend`
 11. `npm install --save multer --prefix backend`
+12. `npm install --save bcryptjs --prefix backend`
 
 ## Testing Tools
 
