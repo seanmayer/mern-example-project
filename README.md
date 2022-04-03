@@ -15,6 +15,7 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 10. `npm install --save mongoose-unique-validator --prefix backend`
 11. `npm install --save multer --prefix backend`
 12. `npm install --save bcryptjs --prefix backend`
+13. `npm install --save jsonwebtoken`
 
 ## Testing Tools
 
