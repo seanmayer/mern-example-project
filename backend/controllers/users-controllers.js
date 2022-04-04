@@ -19,7 +19,7 @@ const getUsers = async (req, res, next) => {
     );
     return next(error);
   }
-  res.json({ users: users.map((user) => user.toObject({ getters: true })) });
+  res.json({ users: users.map(user => user.toObject({ getters: true })) });
 };
 
 const signup = async (req, res, next) => {
@@ -55,7 +55,10 @@ const signup = async (req, res, next) => {
   try {
     hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
-    const error = new HttpError("Could not create user please try again", 500);
+    const error = new HttpError(
+      "Could not create user please try again", 
+      500
+    );
     return next(error);
   }
 
@@ -64,7 +67,7 @@ const signup = async (req, res, next) => {
     email,
     image: req.file.path,
     password: hashedPassword,
-    places: [],
+    places: []
   });
 
   try {
@@ -78,17 +81,16 @@ const signup = async (req, res, next) => {
   }
 
   const SECRET_KEY = process.env.SECRET_KEY;
-
   let token;
   try {
     token = jwt.sign(
       {
         userId: createdUser.id,
-        email: createdUser.email,
+        email: createdUser.email
       },
       SECRET_KEY,
       {
-        expiresIn: "1h",
+        expiresIn: "1h"
       }
     );
   } catch (err) {
@@ -145,6 +147,7 @@ const login = async (req, res, next) => {
       "Invalid credentials, could not log you in.",
       401
     );
+    return next(error);
   }
 
   let token;
@@ -152,11 +155,11 @@ const login = async (req, res, next) => {
     token = jwt.sign(
       {
         userId: existingUser.id,
-        email: existingUser.email,
+        email: existingUser.email
       },
       SECRET_KEY,
       {
-        expiresIn: "1h",
+        expiresIn: "1h"
       }
     );
   } catch (err) {
