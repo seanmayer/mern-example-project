@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const HttpError = require("../models/http-error");
 const User = require("../models/user");
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const getUsers = async (req, res, next) => {
   let users;
@@ -80,7 +81,7 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  const SECRET_KEY = process.env.SECRET_KEY;
+
   let token;
   try {
     token = jwt.sign(
