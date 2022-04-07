@@ -21,3 +21,14 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 
 1. Postman
 
+## Security Considertations
+
+JSON Web Token (JWT) is an open standard (RFC 7519) used for Authentication
+- JWT uses HMAC alorifthm by default (HS256)
+- Involves a combination of a hashing function and one (secret) key 
+- Shared between the two parties used to generate the hash that will serve as the signature
+- Great care must be taken to protecting the key, becuase the same key is used to generate the signture and to perform validation
+Token is stored in local storage 
+- Cross-site scripting (XSS) vunereability this is vunerable as this storage is accssible to JavaScript on the same domain 
+
+
