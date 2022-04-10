@@ -1,4 +1,5 @@
 # misc
 .env
+nodemon.json
 tmps/images/*
 !tmps/images/.gitkeep

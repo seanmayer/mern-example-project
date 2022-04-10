@@ -1,6 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
@@ -48,7 +45,8 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occurred!" });
 });
 
-mongoose.connect(process.env.DB_CONNECTION).then(() => {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.cgogk.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
+.then(() => {
   app.listen(5000);
 }).catch((error) => {
   console.log(error);

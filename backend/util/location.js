@@ -1,10 +1,7 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
 const axios = require("axios");
 const HttpError = require("../models/http-error");
 
-const API_KEY = process.env.NODE_EXPRESS_APP_API_KEY;
+const API_KEY = process.env.GOOGLE_API_KEY;
 
 async function getCoordsForAddress(address) {
   const response = await axios.get(

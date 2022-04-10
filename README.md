@@ -35,4 +35,8 @@ Token is stored in local storage
 - Cross-site scripting (XSS) vunerability, this is vunerable as the local storage used to persist the tokens is accessible to all JS on the same domain
 - To note: React does have some protective measures in place for XSS
 
+## Deployment
+
+Nodemon is used as tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory detected.
+
 

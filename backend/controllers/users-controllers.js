@@ -1,13 +1,9 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const HttpError = require("../models/http-error");
 const User = require("../models/user");
-const SECRET_KEY = process.env.SECRET_KEY;
 
 const getUsers = async (req, res, next) => {
   let users;
@@ -89,7 +85,7 @@ const signup = async (req, res, next) => {
         userId: createdUser.id,
         email: createdUser.email
       },
-      SECRET_KEY,
+      process.env.JWT_KEY,
       {
         expiresIn: "1h"
       }
@@ -158,7 +154,7 @@ const login = async (req, res, next) => {
         userId: existingUser.id,
         email: existingUser.email
       },
-      SECRET_KEY,
+      process.env.JWT_KEY,
       {
         expiresIn: "1h"
       }

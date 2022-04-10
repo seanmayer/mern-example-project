@@ -1,6 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-     require("dotenv").config();
-}
 const HttpError = require("../models/http-error")
 const jwt = require("jsonwebtoken");
 
@@ -14,8 +11,7 @@ module.exports = (req, res, next) => {
               throw new HttpError("Authentication failed!", 401);
           }
 
-     const SECRET_KEY = process.env.SECRET_KEY;
-     const decodedToken = jwt.verify(token, SECRET_KEY);
+     const decodedToken = jwt.verify(token, process.env.JWT_KEY);
      req.userData = {userId: decodedToken.userId};
      next();
      } catch (err) {
