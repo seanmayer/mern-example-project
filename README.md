@@ -36,7 +36,7 @@ Token is stored in local storage
 - To note: React does have some protective measures in place for XSS
 
 ## Deployment
-
-Nodemon is used as tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory detected.
+Frontend - Used dotenv to store environment variables.
+Backend - Nodemon is used as tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory detected.
 
 
