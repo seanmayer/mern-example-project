@@ -37,14 +37,54 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 
 ## Deployment
 
-### Frontend 
+### Frontend (React)
 
 - Used dotenv to store environment variables.
 
 1. `npm run build` -> Optimises, provides only essentials (strips out debugging)
 2. New build folder will be created with all files needed to deploy
 
-### Backend 
+#### Optimisation 
+
+- Code splitting is used to "lazy-load" to create code chunks as and when a user needs a certain component, this increases performance. 
+
+##### Example
+
+Usage of Suspense -> `import React, { Suspense } from "react";`
+Lazy load component -> `const Users = React.lazy(() => import("./user/pages/Users"));`
+Suspense is used to handle loading of components:
+
+```
+return (
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: !!token,
+        token: token,
+        userId: userId,
+        login: login,
+        logout: logout,
+      }}
+    >
+      <Router>
+        <MainNavigation />
+        <main>
+          <Suspense
+            fallback={
+              <div className="center">
+                <LoadingSpinner />
+              </div>
+            }
+          >
+            {routes}
+          </Suspense>
+        </main>
+      </Router>
+    </AuthContext.Provider>
+  );
+};
+```
+
+### Backend (Express.js)
 
 - Nodemon is used as tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory detected.
 
