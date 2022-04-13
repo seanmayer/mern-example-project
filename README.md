@@ -50,8 +50,10 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 
 ##### Example
 
-Usage of Suspense -> `import React, { Suspense } from "react";`
+Usage of Suspense -> `import React, { Suspense } from "react";` 
+
 Lazy load component -> `const Users = React.lazy(() => import("./user/pages/Users"));`
+
 Suspense is used to handle loading of components:
 
 ```
