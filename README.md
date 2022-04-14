@@ -1,6 +1,11 @@
 # MERN Project Example
 Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB (MERN)
 
+- MongoDB - document database
+- Express(.js) - Node.js web framework
+- React(.js) - a client-side JavaScript framework
+- Node(.js) - the premier JavaScript web server
+
 ## Setting up a NodeJS Express Project
 
 1. `npm init --prefix backend`
@@ -17,9 +22,22 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 12. `npm install --save bcryptjs --prefix backend`
 13. `npm install --save jsonwebtoken --prefix backend`
 
+### Finally... (for local development)
+
+1. `npm start --prefix backend`
+2. `npm start --prefix frontend` (don't forget to change package.json from `"start": "node app.js"` to `"start": "nodemon app.js"`)
+
 ## Testing Tools
 
+### Backend testing
+
 - Postman used for Node.js API testing
+
+### Frontend testing
+
+1. Test frontend locally -> Simple local server -> `npm install -g serve --prefix frontend` (can serve static site)
+2. `cd frontend/build/`
+3. `serve` 
 
 ## Security Considerations
 
@@ -37,12 +55,24 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 
 ## Deployment
 
-### Frontend (React)
+- Used dotenv to store environment variables for frontend
+- Backend is using Heroku to source configured environment variables
 
-- Used dotenv to store environment variables.
+### Frontend (React) - DEV testing
 
 1. `npm run build` -> Optimises, provides only essentials (strips out debugging)
 2. New build folder will be created with all files needed to deploy
+
+### Backend (Express.js) - DEV testing
+
+- Nodemon is used as tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory detected. (not to use in production environment)
+
+### Frontend (React) - Live with Google Firebase
+
+1. `npm install firebase --prefix frontend`
+2. `firebase init`
+
+
 
 #### Optimisation 
 
@@ -86,8 +116,6 @@ return (
 };
 ```
 
-### Backend (Express.js)
 
-- Nodemon is used as tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory detected.
 
 
