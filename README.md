@@ -69,7 +69,7 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 
 ### Frontend (React) - Live with Google Firebase
 
-1. `npm install firebase --prefix frontend`
+1. `sudo npm install -g firebase-tools --prefix frontend`
 2. `firebase init`
 
 
