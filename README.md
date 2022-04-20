@@ -67,7 +67,11 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 
 - Nodemon is used as tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory detected. (not to use in production environment)
 
-### Frontend (React) - Live with Google Firebase
+### Backend (Express.js) - Heroku
+
+- Create heroku app and use git to push changes 😀 
+
+### Standalone SPA Frontend (React) - Production with Google Firebase
 
 1. `sudo npm install -g firebase-tools --prefix frontend`
 2. `firbase login`
@@ -80,8 +84,14 @@ Building a fullstack React.js application with Node.js, Express.js &amp; MongoDB
 
 4. `firebase deploy` 
 
+### Combine Frontend & Backend (React) - Heroku
 
-
+1. `npm run build --prefix frontend`
+2. Create `public` folder in backend directory
+3. Copy `frontend/build` contents to `backend/public`
+4. `git add .` 
+5. `git commit -m "added react frontend"`
+6. `git push heroku master`
 
 #### Optimisation 
 

@@ -13,23 +13,13 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use("/tmps/images", express.static(path.join("tmps","images")));
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Headers', 
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  );
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
-  next();
-});
+app.use(express.static(path.join("public")));
 
 app.use("/api/places", placesRoutes);
 app.use("/api/users", userRoutes);
 
 app.use((req, res, next) => {
-  const error = new HttpError("Could not find this route", 404);
-  throw error;
+  res.sendFile(path.resolve(__dirname,"public","index.html"));
 });
 
 app.use((error, req, res, next) => {
