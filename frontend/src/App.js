@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,11 +16,11 @@ import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 
-const Users = React.lazy(() => import("./user/pages/Users"));
-const NewPlace = React.lazy(() => import("./places/pages/NewPlace"));
-const UserPlaces = React.lazy(() => import("./places/pages/UserPlaces"));
-const UpdatePlace = React.lazy(() => import("./places/pages/UpdatePlace"));
-const Auth = React.lazy(() => import("./user/pages/Auth"));
+const Users = lazy(() => import("./user/pages/Users"));
+const NewPlace = lazy(() => import("./places/pages/NewPlace"));
+const UserPlaces = lazy(() => import("./places/pages/UserPlaces"));
+const UpdatePlace = lazy(() => import("./places/pages/UpdatePlace"));
+const Auth = lazy(() => import("./user/pages/Auth"));
 
 const App = () => {
   const { token, login, logout, userId } = useAuth();
